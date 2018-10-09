@@ -1,8 +1,8 @@
 const express = require('express')
 const axios = require('axios')
 
-const clientID = "bb78f04d858a91f636fb";
-const clientSecret = "c95286147b8ba8b622e0dd9b47b0736bc1d36715";
+const clientID = "<<CLIENT_ID>>";
+const clientSecret = "<<CLIENT_SECRET>>";
 
 const app = express()
 app.use(express.static(__dirname + '/public'))
