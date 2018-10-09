@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Generate the Access Token</title>
+</head>
+
+<body>
+
+</body>
+<script>
+	const query = window.location.search.substring(1)
+	const token = query.split('access_token=')[1]
+	console.log(token);
+
+	// Call the user info API using the fetch browser library
+	fetch('//api.github.com/user', {
+			method: "GET",
+			headers: {
+				// Include the token in the Authorization header
+				"Authorization": "token "+token
+			}
+		})
+		// Parse the response as JSON
+		.then(res => res.json())
+		.then(res => {
+			const nameNode = document.createTextNode(`Welcome, ${res.login}`)
+			document.body.appendChild(nameNode)
+		})
+		.catch(function (err) {
+			console.log(err);
+		});
+</script>
+
+</html>
